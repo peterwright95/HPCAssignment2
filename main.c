@@ -89,7 +89,13 @@ main(int argc, char *argv[]) {
     }
 
     //Obtain solution u using the Jacobi method (not sure if N or M, depends on implementation by Jasmine)
+    #ifdef _JACOBI
     jacobi(u, u_upd, f, N, iter_max, tolerance);
+    #endif
+
+    #ifdef _GAUSS_SEIDEL
+    gauss_seidel(u, u_upd, f, N, iter_max, tolerance);
+    #endif
 
     // dump  results if wanted 
     switch(output_type) {
