@@ -5,7 +5,7 @@
 
 void
 gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, double threshold) {
-    int i, j, k, num_iter;
+    int i, j, k, num_iter = 0;
     double delta = 2 / (double)(N + 1);;
 
     float distance = INFINITY;
@@ -33,6 +33,10 @@ gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, dou
                 {
                     u[i][j][k] = u_upd[i][j][k];
                 }
+        
+        if (num_iter < 10){
+            printf("Iteration : %d\nDistance is: %f\n\n",num_iter,distance);
+        }
 
         num_iter += 1;
     }
