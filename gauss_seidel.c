@@ -6,12 +6,12 @@
 void
 gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, double threshold) {
     int i, j, k, num_iter;
-    double delta = 2 / N;
+    double delta = 2 / (double)(N + 1);;
 
     float distance = INFINITY;
 
     double s = 1 / 6;
-    while (distance < threshold && num_iter < iter_max)
+    while (distance > threshold && num_iter < iter_max)
     {
         // Put the distance between u and u_upd to 0 now that the loop is started
         distance = 0;

@@ -78,7 +78,7 @@ main(int argc, char *argv[]) {
     for(i = 0; i < M; i++){
         for(j = 0; j < M; j++){
             for(k = 0; k < M; k++){
-                if ((i <= M * 5 / 16) && (j <= M / 4) && (k <= M / 2) && (k >= M / 6)){
+                if ((i <= (M-1) * 5 / 16) && (j <= (M-1) / 4) && (k <= (M-1) / 2) && (k >= (M-1) / 6)){
                     f[i][j][k] = 200;
                 }
                 else{
