@@ -11,7 +11,7 @@
 #BSUB -q hpcintro
 #BSUB -n 1
 #BSUB -R "rusage[mem=2048]"
-#BSUB -W 00:15
+#BSUB -W 01:00
 # uncomment the following line, if you want to assure that your job has
 # a whole CPU for itself (shared L3 cache)
 # #BSUB -R "span[hosts=1] affinity[socket(1)]"
