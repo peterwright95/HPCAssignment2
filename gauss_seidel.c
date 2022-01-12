@@ -3,7 +3,7 @@
  */
 #include <math.h>
 
-void
+int
 gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, double threshold) {
     int i, j, k, num_iter = 0;
     double delta = 2 / (double)(N + 1);;
@@ -35,7 +35,7 @@ gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, dou
                 }
         
         
-        printf("Iteration : %d\nDistance is: %f\n\n",num_iter,distance);
+        // printf("Iteration : %d\nDistance is: %f\n\n",num_iter,distance);
         
 
         num_iter += 1;
