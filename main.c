@@ -59,14 +59,15 @@ main(int argc, char *argv[]) {
     for(i = 0; i < M; i++){
         for(j = 0; j < M; j++){
             for(k = 0; k < M; k++){
-                if ((i == 0) || (i == M) || (j == M) || (k == 0) || (k == M)){
+                if ((i == 0) || (i == M - 1) || (j == M - 1) || (k == 0) || (k == M - 1)){
                     u[i][j][k] = 20;
                 }
-                else if (j == 0){
+                else {if (j == 0){
                     u[i][j][k] = 0;
                 }
                 else{
                     u[i][j][k] = start_T;
+                }
                 }
 
             }
@@ -77,7 +78,7 @@ main(int argc, char *argv[]) {
     for(i = 0; i < M; i++){
         for(j = 0; j < M; j++){
             for(k = 0; k < M; k++){
-                if ((i <= M * 3 / 16) && (j <= M / 4) && (k <= M / 2) && (k >= M * 2 / 16)){
+                if ((i <= M * 5 / 16) && (j <= M / 4) && (k <= M / 2) && (k >= M / 6)){
                     f[i][j][k] = 200;
                 }
                 else{
@@ -112,7 +113,7 @@ main(int argc, char *argv[]) {
 	    output_ext = ".vtk";
 	    sprintf(output_filename, "%s_%d%s", output_prefix, N, output_ext);
 	    fprintf(stderr, "Write VTK file to %s: ", output_filename);
-	    print_vtk(output_filename, N, u);
+	    print_vtk(output_filename, M, u);
 	    break;
 	default:
 	    fprintf(stderr, "Non-supported output type!\n");
@@ -121,6 +122,8 @@ main(int argc, char *argv[]) {
 
     // de-allocate memory
     free(u);
+    free(u_upd);
+    free(f);
 
     return(0);
 }
