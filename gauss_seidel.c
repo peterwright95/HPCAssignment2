@@ -19,8 +19,8 @@ gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, dou
             for (j = 1; j < N + 1; j++)
                 for (k = 1; k < N + 1; k++)
                 {
-                    u_upd[i][j][k] = u_upd[i - 1][j][k] + u_upd[i + 1][j][k] + u_upd[i][j - 1][k] + u_upd[i][j + 1][k] + u_upd[i][j][k - 1] + u_upd[i][j][k + 1] + delta * delta * f[i][j][k];
-                    u_upd[i][j][k] *= s;
+                    u[i][j][k] = u[i - 1][j][k] + u[i + 1][j][k] + u[i][j - 1][k] + u[i][j + 1][k] + u[i][j][k - 1] + u[i][j][k + 1] + delta * delta * f[i][j][k];
+                    u[i][j][k] *= s;
 
                     // Update the distance between u and u_upd
                     distance += (u_upd[i][j][k] - u[i][j][k]) * (u_upd[i][j][k] - u[i][j][k]);
@@ -31,12 +31,12 @@ gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, dou
             for (j = 1; j < N + 1; j++)
                 for (k = 1; k < N + 1; k++)
                 {
-                    u[i][j][k] = u_upd[i][j][k];
+                    u_upd[i][j][k] = u[i][j][k];
                 }
         
-        if (num_iter < 10){
-            printf("Iteration : %d\nDistance is: %f\n\n",num_iter,distance);
-        }
+        
+        printf("Iteration : %d\nDistance is: %f\n\n",num_iter,distance);
+        
 
         num_iter += 1;
     }
