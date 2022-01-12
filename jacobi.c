@@ -6,8 +6,8 @@
 // N is the number of points per dimension
 void jacobi(double ***u, double ***u_upd, double ***f, int N, int iter_max, double threshold)
 {
-    int i, j, k, num_iter;
-    double delta = 2 / N;
+    int i, j, k, num_iter = 0;
+    double delta = 2 / (N + 1);
 
     float distance = INFINITY;
 
