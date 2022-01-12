@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include "alloc3d.h"
 #include "print.h"
+#include <omp.h>
+
 
 #ifdef _JACOBI
 #include "jacobi.h"
@@ -89,14 +91,22 @@ main(int argc, char *argv[]) {
         }
     }
 
+    double stime, ftime, exec_time;
+    int iteration = 0;
     //Obtain solution u using the Jacobi method (not sure if N or M, depends on implementation by Jasmine)
     #ifdef _JACOBI
-    jacobi(u, u_upd, f, N, iter_max, tolerance);
+    stime = omp_get_wtime();
+    iteration = jacobi(u, u_upd, f, N, iter_max, tolerance);
+    ftime = omp_get_wtime();
     #endif
 
     #ifdef _GAUSS_SEIDEL
-    gauss_seidel(u, u_upd, f, N, iter_max, tolerance);
+    stime = omp_get_wtime();
+    iteration = gauss_seidel(u, u_upd, f, N, iter_max, tolerance);
+    ftime = omp_get_wtime();
     #endif
+
+    printf("%d %f %d", N, ftime - stime, iteration);
 
     // dump  results if wanted 
     switch(output_type) {
