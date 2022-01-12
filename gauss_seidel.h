@@ -5,6 +5,6 @@
 #define _GAUSS_SEIDEL_H
 
 // define your function prototype here
-void gauss_seidel(double ***, double ***, double ***, int, int, double);
+int gauss_seidel(double ***, double ***, double ***, int, int, double);
 
 #endif
