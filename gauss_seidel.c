@@ -10,7 +10,7 @@ gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, dou
 
     float distance = INFINITY;
 
-    double s = 1 / 6;
+    double s = 1.0 / 6.0;
     while (distance > threshold && num_iter < iter_max)
     {
         // Put the distance between u and u_upd to 0 now that the loop is started
@@ -27,7 +27,12 @@ gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, dou
                 }
 
         // Put u_upd into u to remake the calculations another time
-        u = u_upd;
+        for (i = 1; i < N + 1; i++)
+            for (j = 1; j < N + 1; j++)
+                for (k = 1; k < N + 1; k++)
+                {
+                    u[i][j][k] = u_upd[i][j][k];
+                }
 
         num_iter += 1;
     }
