@@ -10,8 +10,6 @@ int jacobi(double ***u, double ***u_upd, double ***f, int N, int iter_max, doubl
 {
     int i, j, k, num_iter = 0;
     double delta = 2 / (double)(N + 1);
-    double *swap;
-    // printf("Delta is %f\n", delta);
 
     float distance = INFINITY;
 
@@ -53,8 +51,6 @@ int jacobi_baseline(double ***u, double ***u_upd, double ***f, int N, int iter_m
 {
     int i, j, k, num_iter = 0;
     double delta = 2 / (double)(N + 1);
-    double *swap;
-    printf("Delta is %f\n", delta);
 
     float distance = INFINITY;
 

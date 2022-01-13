@@ -2,6 +2,7 @@
  *
  */
 #include <math.h>
+#include <stdio.h>
 
 int
 gauss_seidel(double ***u, double ***u_upd, double ***f, int N, int iter_max, double threshold) {
