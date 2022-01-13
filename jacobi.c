@@ -86,7 +86,7 @@ int jacobi_baseline(double ***u, double ***u_upd, double ***f, int N, int iter_m
 
         num_iter += 1;
     }
-    printf("%d %f %d %d", N, distance, num_iter, threads);
+    printf("%d %f %d %d ", N, distance, num_iter, threads);
     return threads;
 }
 
@@ -131,6 +131,6 @@ int jacobi_collapse(double ***u, double ***u_upd, double ***f, int N, int iter_m
 
         num_iter += 1;
     }
-    printf("%d %f %d %d", N, distance, num_iter, threads);
+    printf("%d %f %d %d ", N, distance, num_iter, threads);
     return threads;
 }
