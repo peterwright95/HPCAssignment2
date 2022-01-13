@@ -106,7 +106,7 @@ main(int argc, char *argv[]) {
     ftime = omp_get_wtime();
     #endif
 
-    printf("%d %f %d", N, ftime - stime, iteration);
+    printf("%f\n", ftime - stime);
 
     // dump  results if wanted 
     switch(output_type) {

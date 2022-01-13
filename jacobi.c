@@ -11,7 +11,7 @@ int jacobi(double ***u, double ***u_upd, double ***f, int N, int iter_max, doubl
     int i, j, k, num_iter = 0;
     double delta = 2 / (double)(N + 1);
     double *swap;
-    printf("Delta is %f\n", delta);
+    // printf("Delta is %f\n", delta);
 
     float distance = INFINITY;
 
@@ -26,8 +26,7 @@ int jacobi(double ***u, double ***u_upd, double ***f, int N, int iter_max, doubl
             {
                 for (k = 1; k < N + 1; k++)
                 {
-                    u_upd[i][j][k] = u[i - 1][j][k] + u[i + 1][j][k] + u[i][j - 1][k] + u[i][j + 1][k] + u[i][j][k - 1] + u[i][j][k + 1] + delta * delta * f[i][j][k];
-                    u_upd[i][j][k] *= s;
+                    u_upd[i][j][k] = s*(u[i - 1][j][k] + u[i + 1][j][k] + u[i][j - 1][k] + u[i][j + 1][k] + u[i][j][k - 1] + u[i][j][k + 1] + delta * delta * f[i][j][k]);
 
                     // Update the distance between u and u_upd
                     distance += (u_upd[i][j][k] - u[i][j][k]) * (u_upd[i][j][k] - u[i][j][k]);
@@ -45,7 +44,8 @@ int jacobi(double ***u, double ***u_upd, double ***f, int N, int iter_max, doubl
 
         num_iter += 1;
     }
-    return num_iter;
+    printf("%d %f %d ", N, distance, num_iter);
+    return 0;
 }
 
 

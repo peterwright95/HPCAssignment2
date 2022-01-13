@@ -27,7 +27,7 @@ EXECUTABLE=./poisson_j
 OUTFILE=jacobi_serial.dat
 
 # define the grid size here
-SIZES="10 20 50 100 200 500 1000"
+SIZES="10 20 50 100 200"
 
 # define the iteration time
 ITER="5000"
@@ -45,6 +45,5 @@ for S in $SIZES
 do
     $EXECUTABLE $S $ITER $TOL $START >> DATAFILE/$OUTFILE
 done
-
 
 
