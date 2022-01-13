@@ -9,7 +9,7 @@
 #BSUB -J jacobi
 #BSUB -o mm_batch_%J.out
 #BSUB -q hpc
-#BSUB -n 1
+#BSUB -n 24
 #BSUB -R "rusage[mem=2048]"
 #BSUB -W 16:00 
 #BSUB -R "span[hosts=1]"
