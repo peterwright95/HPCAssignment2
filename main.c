@@ -96,7 +96,8 @@ main(int argc, char *argv[]) {
     //Obtain solution u using the Jacobi method (not sure if N or M, depends on implementation by Jasmine)
     #ifdef _JACOBI
     stime = omp_get_wtime();
-    iteration = jacobi(u, u_upd, f, N, iter_max, tolerance);
+    // iteration = jacobi(u, u_upd, f, N, iter_max, tolerance);
+    jacobi_baseline(u, u_upd, f, N, iter_max, tolerance);
     ftime = omp_get_wtime();
     #endif
 
