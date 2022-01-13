@@ -61,9 +61,9 @@ int jacobi_baseline(double ***u, double ***u_upd, double ***f, int N, int iter_m
     {
         // Put the distance between u and u_upd to 0 now that the loop is started
         distance = 0;
+        #pragma omp parallel for reduction(+: distance)
         for (i = 1; i < N + 1; i++)
         {
-            #pragma omp parallel for reduction(+: distance)
             for (j = 1; j < N + 1; j++)
             {
                 for (k = 1; k < N + 1; k++)
