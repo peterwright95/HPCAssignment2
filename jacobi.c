@@ -107,6 +107,7 @@ int jacobi_barrier(double ***u, double ***u_upd, double ***f, int N, int iter_ma
     while (distance > threshold && num_iter < iter_max)
     {
         // Put the distance between u and u_upd to 0 now that the loop is started
+      #pragma omp barrier
       #pragma omp for reduction(+: temp_dis)
       for (i = 1; i < N + 1; i++)
       {
