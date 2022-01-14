@@ -47,10 +47,12 @@ main(int argc, char *argv[]) {
         perror("array u: allocation failed");
         exit(-1);
     }
+    #ifdef _JACOBI
     if ( (u_upd = d_malloc_3d(M, M, M)) == NULL ) {
         perror("array u_upd: allocation failed");
         exit(-1);
     }
+    #endif
     if ( (f = d_malloc_3d(M, M, M)) == NULL ) {
         perror("array f: allocation failed");
         exit(-1);
@@ -93,20 +95,20 @@ main(int argc, char *argv[]) {
 
     double stime, ftime, exec_time;
     int iteration = 0;
-    //Obtain solution u using the Jacobi method
+    //Obtain solution u using the Jacobi method (not sure if N or M, depends on implementation by Jasmine)
     #ifdef _JACOBI
     stime = omp_get_wtime();
-    jacobi_collapse(u, u_upd, f, N, iter_max, tolerance);
+    iteration = jacobi(u, u_upd, f, N, iter_max, tolerance);
     ftime = omp_get_wtime();
     #endif
 
     #ifdef _GAUSS_SEIDEL
     stime = omp_get_wtime();
-    iteration = gauss_seidel(u, u_upd, f, N, iter_max, tolerance);
+    gauss_seidel_parallel(u, f, N, iter_max, tolerance);
     ftime = omp_get_wtime();
     #endif
 
-    printf("%f\n", ftime - stime);
+    printf("Time elapsed %f\n", ftime - stime);
 
     // dump  results if wanted 
     switch(output_type) {
